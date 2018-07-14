@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./css/bootstrap.css">
 </head>
 <body>
-    <ul></ul>
+    <!-- <ul></ul>
     <ul></ul>
     <ul></ul>
     <ul></ul>
@@ -17,9 +17,25 @@
         <img class="disimg">
         <h4></h4>
         <p></p>
-    </li>
+    </li> -->
 
-    <script src="./js/jquery-3.3.1.js"></script>
+    <div class="container">
+        <div class="row" id="imgList">
+        </div>
+    </div>
+
+    <div class="col-md-3" id="base" style="display: none">
+        <div class="thumbnail">
+            <img class="disimg img-thumbnail">
+            <div class="caption">
+              <h4></h4>
+              <p id="price"></p>
+              <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+            </div>
+          </div>
+    </div>
+
+    <script src="./js/jquery-3.3.2.js"></script>
     <script src="./js/bootstrap.js"></script>
     <script src="./js/list.js"></script>
 

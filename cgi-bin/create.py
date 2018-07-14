@@ -1,7 +1,7 @@
-import pymysql
+import pymongo
 
-connection = pymysql.connect('db.bobdu.cc', 'root', '123456', 'waterfall', charset='utf8', cursorclass=pymysql.cursors.DictCursor)
-cursor = connection.cursor()
+mongoClient = pymongo.MongoClient('db.bobdu.cc')
+db = mongoClient.waterfall
 
 arr = [
     {'id': '1', 'title': '  小清新格子包臀裙     ', 'pic': '    ./images/3aa3744cf515f5c0b7fd8b21c4c6edaf.jpg    ', 'price': '  55   '},
@@ -285,11 +285,8 @@ arr = [
 ]
 
 for a in arr:
-    sql = 'insert into goods value ({id}, "{title}", "{pic}", {price})'.format(**a)
-    print(sql)
-    cursor.execute(sql)
+    db.goods.insert(a)
 
-connection.commit()
 
 
 

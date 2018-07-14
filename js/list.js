@@ -3,14 +3,16 @@ var pageNum = 0;
 loadNew = function(){
     $.get('./cgi-bin/goods.py', {p: pageNum}, function(data){
         for(var i in data){
-            var newLi = $('#base').clone(true);
-            $(newLi).attr('id', data[i].id);
-            $(newLi).find('img').attr('src', data[i].pic);
-            $(newLi).find('h4').html(data[i].title);
-            $(newLi).find('p').html(data[i].price);
-            $(newLi).css('display', 'block');
-            $('ul').eq(i%4).append($(newLi));
-            $(newLi).find('img').height($(newLi).find('img').width()*1.2);
+            var newThumbnail = $('#base').clone(true);
+            $(newThumbnail).attr('id', data[i].id);
+            $(newThumbnail).find('img').attr('src', data[i].pic);
+            $(newThumbnail).find('h4').html(data[i].title);
+            $(newThumbnail).find('#price').html(data[i].price);
+            $(newThumbnail).css('display', 'block');
+            $('#imgList').append($(newThumbnail));
+            // $(newThumbnail).find('img').height($(newThumbnail).find('img').width()*1.2);
+            $('.disimg').height($('.thumbnail').width());
+
         }
     }, 'json');
     pageNum += 1;
@@ -18,9 +20,9 @@ loadNew = function(){
 
 $(loadNew());
 
-$(window).resize(function(){
-    $('.disimg').height($('.disimg').width()*1.5);
-})
+// $(window).resize(function(){
+//     $('.disimg').height($('.disimg').width()*1.5);
+// })
 
 $(window).scroll(function(){
     
